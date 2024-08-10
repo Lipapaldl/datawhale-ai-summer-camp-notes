@@ -7,14 +7,13 @@
 > 3. 完成可图故事赛体验
 
 [TOC]
-
 ___
 
 # 一、文生图历史发展——知其然知其所以然
 
 ## 1.1 生成模型发展历程
 
-![image-20240808203505738](IMG\image-20240808203505738.png)
+![image-20240808203505738](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808203505738.png)
 
 _____
 
@@ -26,31 +25,26 @@ _____
 
 - step1：建立传输函数（or 积分核）的神经网络参数化模型 
 
-- $$
+$$
   f(z) = f_θ(z)
-  $$
+$$
 
 - step2：建立分布间距离的度量
 
-- $$
+$$
   d(p_1,p_2)
-  $$
+$$
 
 - step3：寻找优化算法求解最优化问题
 
-- 
-
-- $$
+$$
   min_θ{d(p_{f_θ}(z),p_{data})}
-  $$
-
-- 
-
+$$
 ___
 
 ###  生成模型对比图
 
-![image-20240808204447624](IMG\image-20240808204447624.png)
+![image-20240808204447624](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808204400187.png)
 
 | 生成模型                      | 分布间度量           | 优化算法          |
 | ----------------------------- | -------------------- | ----------------- |
@@ -111,7 +105,7 @@ Denoising Diffusion Probabilistic Model https://arxiv.org/abs/2006.11239
 
 ### 从概率分布角度理解扩散
 
-![image-20240808212749200](IMG\image-20240808212749200.png)
+![image-20240808212749200](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808212749200.png)
 
 上图漩涡形状的二维联合概率分布P（x，y），扩散过程q直观理解为 集中有序的点受到噪声扰动向外部扩散，最终变成无序的噪声分布；diffusion model要做的是上述过程的逆过程，将噪声分布N（0，1）逐步去噪以映射到P_data，直到从噪声分布中采样得到想要的图像，完成生成过程。
 
@@ -121,15 +115,15 @@ Denoising Diffusion Probabilistic Model https://arxiv.org/abs/2006.11239
 
 **马尔可夫链**：状态空间中从一个状态到另一个状态的转换的随机过程，并且下一状态的概率分布只由当前状态决定，在时间序列中和前面的事件均无关
 
-![image-20240808212817163](IMG\image-20240808212817163.png)
+![image-20240808212817163](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808212817163.png)
 
 **正向扩散过程**：从输入X_0到X_T是一个马尔可夫链，表示状态空间中经过一个到另一个状态的转换的随机过程，上图表示Diffusion Models对应的图像扩散过程。X_T是纯高斯噪声的图片
 
-![image-20240808212131903](IMG\image-20240808212131903.png)
+![image-20240808212131903](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808212131903.png)
 
 模型训练集中在**逆扩散过程**中，模型训练的目标是学习正向的反过程，即训练概率分布
 
-![image-20240808213202842](IMG\image-20240808213202842.png)
+![image-20240808213202842](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808213202842.png)
 
 通过沿着马尔可夫链向后遍历，可以重新生成新的数据X_0，完成生成过程。
 
@@ -145,7 +139,7 @@ High-Resolution Image Synthesis with Latent Diffusion Models（2020）
 
 https://arxiv.org/abs/2112.10752
 
-![image-20240808214505982](IMG\image-20240808214505982.png)
+![image-20240808214505982](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808214505982.png)
 
 现有的扩散模型（Diffusion Model）：
 
@@ -165,7 +159,7 @@ ___
 
 checkpoint 就像游戏关卡存档功能，可以加载保存的模型权重重新开启训练，甚至继续推理
 
-![image-20240808215718060](IMG\image-20240808215718060.png)
+![image-20240808215718060](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808215718060.png)
 
 ___
 
@@ -179,7 +173,7 @@ ____
 
 Low-Rank Adaptation of Large Language Models，一种微调大模型语言技术。在微调Stable Diffusion中可以用于将图像表示与描述它们的提示相关联的 交叉注意力层。
 
-![image-20240808220128391](IMG\image-20240808220128391.png)
+![image-20240808220128391](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808220128391.png)
 
 ____
 
@@ -187,7 +181,7 @@ ____
 
 一种生成网络的网络，通过它生成其他网络权重，用于生成描述图像的提示的交叉注意力层
 
-![image-20240808220248765](IMG\image-20240808220248765.png)
+![image-20240808220248765](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808220248765.png)
 
 ### AVE 特定
 
@@ -205,11 +199,11 @@ ___
 
 step1 进入魔塔官网https://modelscope.cn/ ，点击 我的Notebook -> 配置GPU环境 -> 启动
 
-![image-20240808222619924](IMG\image-20240808222619924.png)
+![image-20240808222619924](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808222619924.png)
 
 step2 上传文件
 
-![image-20240808222945581](IMG\image-20240808222945581.png)
+![image-20240808222945581](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240808222945581.png)
 
 - baseline.ipynb：LoRA 训练脚本
 - ComfyUI.ipynb：ComfyUI 脚本
@@ -220,17 +214,17 @@ step2 上传文件
 
 项目克隆到本地失败
 
-![image-20240809190211879](IMG\image-20240809190211879.png)
+![image-20240809190211879](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240809190211879.png)
 
 原因：pip版本太旧
 
 解决办法：添加代码然后重启内核重新运行
 
-![deca129695729b65e1ca87640f63b58](C:\Users\xiandan\Documents\WeChat Files\wxid_6lyomvyv1yn722\FileStorage\Temp\deca129695729b65e1ca87640f63b58.png)
+![deca129695729b65e1ca87640f63b58](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/deca129695729b65e1ca87640f63b58.png)
 
 继续运行后发现仍然无法解决，尝试将库下载到本地然后上传
 
-![image-20240809192214725](IMG\image-20240809192214725.png)
+![image-20240809192214725](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240809192214725.png)
 
 https://github.com/modelscope/data-juicer.git
 
@@ -266,7 +260,7 @@ import os
 
 Data-Juicer 是一个一站式**多模态**数据处理系统，旨在为大语言模型 (LLM) 提供更高质量、更丰富、更易“消化”的数据。
 
-![image-20240810090321009](IMG\image-20240810090321009.png)
+![image-20240810090321009](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240810090321009.png)
 
 DiffSynth Studio 是一个扩散引擎。 该项目重组了包括文本编码器、UNet、VAE 等在内的架构，支持[Kolors](https://huggingface.co/Kwai-Kolors/Kolors)模型
 
@@ -567,5 +561,5 @@ image = Image.fromarray(image).resize((1024, 2048))
 image
 ```
 
-![image-20240810094413125](IMG\image-20240810094413125.png)
+![image-20240810094413125](https://github.com/Lipapaldl/datawhale-ai-summer-camp-notes/blob/master/AICG/task1/IMG/image-20240810094413125.png)
 
